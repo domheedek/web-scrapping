@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.common.exceptions import *
+import re 
 
 webdriver_path = '/Users/PC_COM1/chromedriver' # Enter the file directory of the Chromedriver
 Lazada_url = 'https://www.lazada.co.th'
@@ -34,7 +35,7 @@ for title in item_titles:
 for price in item_prices:
     prices_list.append(price.text)
 
-#Group product 
+#Group product in dict
 product =  dict(zip(titles_list, prices_list))
 for i,j in product.items():
     print(i,':',j)
