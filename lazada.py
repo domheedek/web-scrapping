@@ -1,10 +1,11 @@
 from selenium import webdriver
 from selenium.common.exceptions import *
 import re 
+import pandas as pd 
 
 webdriver_path = '/Users/PC_COM1/chromedriver' # Enter the file directory of the Chromedriver
 Lazada_url = 'https://www.lazada.co.th'
-search_item = '55T6' # Choose this because I often search for coffee!
+search_item = 'iphone 12' # Choose this because I often search for coffee!
 
 # Select custom Chrome options
 options = webdriver.ChromeOptions()
@@ -35,7 +36,12 @@ for title in item_titles:
 for price in item_prices:
     prices_list.append(price.text)
 
-#Group product in dict
-product =  dict(zip(titles_list, prices_list))
-for i,j in product.items():
-    print(i,':',j)
+product = dict(zip(titles_list, prices_list))
+# print(product)
+# for i,j in product.items():
+#     print(i,':',j)
+
+df = pd.DataFrame.from_dict(product, orient='index')
+
+print(df)
+
