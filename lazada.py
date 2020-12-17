@@ -23,12 +23,18 @@ search_bar = browser.find_element_by_id('q')  # ID Searchbar
 search_bar.send_keys(search_item)  # Send item you want to Search
 search_bar.submit()
 
+
+
+#item_stores = browser.find_elements_by_class_name('')
+#item_rating = browser.find_elements_by_class_name('')
 item_titles = browser.find_elements_by_class_name('c16H9d')
 item_prices = browser.find_elements_by_class_name('c13VH6')
 
 # Initialize empty lists
 titles_list = []
 prices_list = []
+stores_list = []
+rating_list = []
 
 # Loop over the item_titles and item_prices
 for title in item_titles:
@@ -37,13 +43,14 @@ for title in item_titles:
 for price in item_prices:
     prices_list.append(price.text)
 
+#for store in item_stores:
+#   stores_list.append(store.text)
+
+#for rating in item_rating:
+#    rating_list.append(rating.text)
+
 product = dict(zip(titles_list, prices_list))
-# print(product)
-# for i,j in product.items():
-#     print(i,':',j)
-
 df = pd.DataFrame.from_dict(product, orient='index')
-
 filterPro = df.filter(like = 'Pro', axis = 0)
 
 print(filterPro)
