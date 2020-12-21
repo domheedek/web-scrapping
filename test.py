@@ -11,6 +11,7 @@ driver.get(url)
 print(len(driver.find_elements_by_css_selector('a.ui-paging-next')))
 
 page_number = 1
+
 while True:
     try:
         link = driver.find_element_by_link_text(str(page_number))
