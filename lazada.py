@@ -61,7 +61,7 @@ for price in item_prices:
 # #    rating_list.append(rating.text)
 
 product = dict(zip(titles_list, prices_list))
-df = pd.DataFrame.from_dict(product, orient='index')
-filterPro = df.filter(like='Pro', axis=0)
+df = pd.DataFrame.from_dict(product, orient = 'index')
+filterPro = df.filter(like = 'Pro', axis = 0)
 
 print(filterPro)
